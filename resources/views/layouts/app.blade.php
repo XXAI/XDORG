@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav w-100">
                         <li class="nav-item {{(isset($activo) && $activo == 'registro')?'active':''}}">
-                            <a class="nav-link" href="registro">Formulario de Registro</a>
+                            <a class="nav-link" href="registro-donador">Formulario de Registro</a>
                         </li>
                         <li class="nav-item {{(isset($activo) && $activo == 'donadores')?'active':''}}">
                             <a class="nav-link" href="donadores">Listado de Donadores</a>

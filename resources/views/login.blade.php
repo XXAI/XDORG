@@ -8,6 +8,16 @@
 
 @section('content')
     <div class="row">
+        <div class="col-3">
+            <img src="{{asset('images/LOGOS-01.jpg')}}" class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-6">
+        </div>
+        <div class="col-3">
+            <img src="{{asset('images/LOGOS-03.jpg')}}" class="img-fluid" alt="Responsive image">
+        </div>
+    </div>
+    <div class="row">
         <div class="offset-lg-4 col-lg-4 col-md col-sm">
             <div class="card shadow">
                 <div class="card-header text-center">

@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', function () { return Redirect::to('registro'); });
-Route::get('registro', [ 'as' => 'registro', 'uses' => 'RegistroController']);
+Route::get('/', function () { return Redirect::to('registro-donador'); });
+Route::get('registro-donador', [ 'as' => 'registro-donador', 'uses' => 'RegistroController']);
 
 Route::get('login',['as'=>'login','uses'=>'LoginController']);
+
 Route::middleware('auth')->get('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
 
 Route::middleware('auth')->get('donadores',['as'=>'donadores','uses'=>'DonadoresController@index']);
