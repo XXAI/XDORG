@@ -9,7 +9,16 @@
 @section('content')
     <div class="row">
         <div class="offset-lg-1 col-lg-10 col-md col-sm">
-
+            <div class="row">
+                <div class="col-3">
+                    <img src="{{asset('images/LOGOS-01.jpg')}}" class="img-fluid" alt="Responsive image" style="height:90px;">
+                </div>
+                <div class="col"></div>
+                <div class="col-3 text-right">
+                    <img src="{{asset('images/LOGOS-03.jpg')}}" class="img-fluid" alt="Responsive image" style="height:90px;">
+                </div>
+            </div>
+            
             <div id="mensaje-guardado" class="card border-success mb-3 text-center" style="display:none;">
                 <div class="card-header">Guardado Correctamente</div>
                 <div class="card-body text-success">

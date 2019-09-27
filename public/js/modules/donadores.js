@@ -10,7 +10,7 @@ function actualizarRegistros(){
         for(var i in data['paginado'].data){
             var elemento = data['paginado'].data[i];
             var nombre_completo = elemento.a_paterno + " " + elemento.a_materno + " " + elemento.nombre;
-            registros += "<tr><td><a href='#' onclick='mostrarDetalles(event,"+elemento.id+");'>"+ nombre_completo +"</a></td><td class='text-center'>"+elemento.fecha_nacimiento+"</td><td class='text-center'>"+elemento.curp+"</td><td class='text-center'>"+elemento.genero+"</td><td class='text-center'>"+elemento.ciudad+"</td><td class='text-center'>"+elemento.created_at+"</td></tr>";
+            registros += "<tr><td>"+ nombre_completo +"</td><td class='text-center'>"+elemento.fecha_nacimiento+"</td><td class='text-center'>"+elemento.curp+"</td><td class='text-center'>"+elemento.genero+"</td><td class='text-center'>"+elemento.ciudad+"</td><td class='text-center'>"+elemento.created_at+"</td></tr>";
         }
         
         $('#lista-registros').html(registros);

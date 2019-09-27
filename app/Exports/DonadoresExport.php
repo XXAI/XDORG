@@ -8,17 +8,56 @@ use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+//use Maatwebsite\Excel\Concerns\WithDrawings;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Worksheet\Drawing;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class DonadoresExport implements FromQuery, WithHeadings, WithColumnFormatting, WithMapping, ShouldAutoSize
+class DonadoresExport implements FromQuery, WithHeadings, WithColumnFormatting, WithMapping, WithEvents
 {
     use Exportable;
 
     public function __construct($params){
         $this->params = $params;
     }
+
+    public function registerEvents(): array{
+        return [
+            AfterSheet::class => function (AfterSheet $event){
+                $event->sheet->getDelegate()->getColumnDimension('A')->setWidth(5);
+                $event->sheet->getDelegate()->getColumnDimension('B')->setWidth(39);
+                $event->sheet->getDelegate()->getColumnDimension('C')->setWidth(19);
+                $event->sheet->getDelegate()->getColumnDimension('D')->setWidth(23);
+                $event->sheet->getDelegate()->getColumnDimension('E')->setWidth(7);
+                $event->sheet->getDelegate()->getColumnDimension('F')->setWidth(9);
+                $event->sheet->getDelegate()->getColumnDimension('G')->setWidth(14);
+                $event->sheet->getDelegate()->getColumnDimension('H')->setWidth(13);
+                $event->sheet->getDelegate()->getColumnDimension('I')->setWidth(22);
+                $event->sheet->getDelegate()->getColumnDimension('J')->setWidth(19);
+                $event->sheet->getDelegate()->getColumnDimension('K')->setWidth(16);
+            },
+        ];
+    }
+
+    /*public function drawings(){
+        $drawing = new Drawing();
+        $drawing->setName('Logo');
+        //$drawing->setDescription('This is my logo');
+        $drawing->setPath(public_path('images/LOGOS-01.jpg'));
+        $drawing->setHeight(90);
+        $drawing->setCoordinates('A1');
+
+        $drawing2 = new Drawing();
+        $drawing2->setName('Other image');
+        //$drawing2->setDescription('This is a second image');
+        $drawing2->setPath(public_path('images/LOGOS-03.jpg'));
+        $drawing2->setHeight(90);
+        $drawing2->setCoordinates('K1');
+
+        return [$drawing, $drawing2];
+    }*/
 
     public function headings(): array{
         return [
