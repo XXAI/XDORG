@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response as HttpResponse;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Input;
 use Carbon\carbon;
 use \Validator;
 use App\Models\Donador;
@@ -19,9 +18,9 @@ class DonadoresController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $parametros = Input::all();
+        $parametros = $request->all();
 
         $lista_donadores = Donador::select('donadores.*','entidades_federativas.nombre as estado')
                             ->leftJoin('entidades_federativas','entidades_federativas.id','=','donadores.estado_id');

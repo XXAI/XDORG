@@ -6,7 +6,6 @@ use Illuminate\Http\Response as HttpResponse;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Input;
 use \Validator, \Auth, \Redirect;
 use Request, \Response;
 use Carbon\Carbon;
@@ -47,21 +46,21 @@ class LoginController extends Controller
         return 'usuario';
     }
 
-    public function doLogin(){
+    public function doLogin(Request $request){
         try{
             $rules = array(
                 'usuario'     => 'required',
                 'password' => 'required|min:3'
             );
     
-            $validator = Validator::make(Input::all(), $rules);
+            $validator = Validator::make($request::all(), $rules);
     
             if ($validator->fails()) {
                 return response()->json(['validacion'=>false, 'errores'=>$validator->errors()], HttpResponse::HTTP_OK);
             }else{
                 $userdata = array(
-                    'usuario'     => Input::get('usuario'),
-                    'password'  => Input::get('password')
+                    'usuario'     => $request::get('usuario'),
+                    'password'  => $request::get('password')
                 );
     
                 if (Auth::attempt($userdata)) {
