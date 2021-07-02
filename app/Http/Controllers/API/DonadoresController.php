@@ -109,8 +109,8 @@ class DonadoresController extends Controller
         //
     }
 
-    public function exportExcel(){
-        $parametros = Input::all();
+    public function exportExcel(Request $request){
+        $parametros = $request->all();
         return (new DonadoresExport($parametros))->download('donadores.xlsx');
     }
 
