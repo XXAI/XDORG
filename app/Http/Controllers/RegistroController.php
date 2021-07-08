@@ -14,6 +14,7 @@ class RegistroController extends Controller
      */
     public function __invoke(Request $request){
         $entidades_federativas = \App\Models\EntidadFederativa::all();
-        return view('registro-donadores',['estados'=>$entidades_federativas,'activo'=>'registro']);
+        $seguros = \App\Models\Seguro::all();
+        return view('registro-donadores',['estados'=>$entidades_federativas,'seguros'=>$seguros,'activo'=>'registro']);
     }
 }

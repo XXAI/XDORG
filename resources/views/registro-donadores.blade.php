@@ -30,11 +30,22 @@
 
             <div id="formulario-registro" class="card">
                 <div class="card-header text-center">
-                    <h5 class="card-title">Datos del solicitante</h5>
+                    <h5 class="card-title">Datos del Donador Voluntario</h5>
                 </div>
                 <div class="card-body">
                     <form method="post" id="form-donador">
                     @csrf <!-- {{ csrf_field() }} -->
+                        <div class="form-row">
+                            <div class="col-md col-sm-7 col-12">
+                                <div class="form-group">
+                                    <label>CURP</label>
+                                    <input type="text" class="form-control" name="curp" id="curp" maxlength="18" onkeyup="validarCURP()">
+                                    <div id="error_curp" class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-7 col-12">
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="col-md col-sm-12 col-12">
                                 <div class="form-group">
@@ -73,22 +84,27 @@
                                     <div id="error_edad" class="invalid-feedback"></div>
                                 </div>
                             </div>
-                            <div class="col-md col-sm-7 col-12">
-                                <div class="form-group">
-                                    <label>CURP</label>
-                                    <input type="text" class="form-control" name="curp" id="curp">
-                                    <div id="error_curp" class="invalid-feedback"></div>
-                                </div>
-                            </div>
                             <div class="col-md col-sm-5 col-12">
                                 <div class="form-group">
-                                    <label>Genero</label>
+                                    <label>Sexo</label>
                                     <select class="form-control" name="genero" id="genero">
-                                        <option value="">Seleccione un Genero</option>
+                                        <option value="">Seleccione un Sexo</option>
                                         <option value="F">Femenino</option>
                                         <option value="M">Masculino</option>
                                     </select>
                                     <div id="error_genero" class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="col-md col-sm-4 col-12">
+                                <div class="form-group">
+                                    <label>Es Derecho-habiente</label>
+                                    <select class="form-control" name="derechohabiencia_id" id="derechohabiencia_id">
+                                        <option value="">Seleccione un seguro</option>
+                                        @foreach($seguros as $seguro)
+                                        <option value="{{$seguro->id}}"> {{ $seguro->descripcion }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div id="error_derechohabiencia_id" class="invalid-feedback"></div>
                                 </div>
                             </div>
                         </div>

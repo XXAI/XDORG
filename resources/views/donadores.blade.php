@@ -15,7 +15,7 @@
             </div>
             <div class="col-6 col-md-2">
                 <select name="tipo_genero" id="tipo_genero" class="form-control">
-                    <option value='' selected="selected">Filtrar por Genero</option>
+                    <option value='' selected="selected">Filtrar por Sexo</option>
                     <option value='M'>Masculino</option>
                     <option value='F'>Femenino</option>
                 </select>

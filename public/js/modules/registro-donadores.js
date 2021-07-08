@@ -1,3 +1,9 @@
+function validarCURP(){
+    if(curp.length == 18){
+        //
+    }
+}
+
 function enviarFormulario(){
     var parametros = $("#form-donador").serialize();
     limpiarErroresFormulario();
@@ -35,8 +41,6 @@ function limpiarFormulario(){
 }
 
 function calcularEdad(){
-    console.log('calculando');
-
     var birthDate = new Date($('#fecha_nacimiento').val());
     var ageDifMs = Date.now() - birthDate.getTime();
     var ageDate = new Date(ageDifMs); // miliseconds from epoch
